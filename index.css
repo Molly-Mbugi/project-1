@@ -75,5 +75,7 @@ p{
     padding: 10px 20px; /* Adjust padding to increase button size */
     font-size: 16px; /* Adjust font size */
 }
-
+.character-list-container{
+    color: antiquewhite;
+}
 
