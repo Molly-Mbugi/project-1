@@ -58,15 +58,7 @@ h4{
 }
 
 /* Apply background image to body */
-body {
-    margin: 0;
-    padding: 0;
-    background-image: url('https://www.wired.com/wp-content/uploads/2019/12/Cul-final-space-s2-image-5-1200x630-e1576255241493.jpg');
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    position: relative; /* Set position to relative */
-}
+
 p{
     color: aliceblue;
     font-size: 20px; 
@@ -76,6 +68,22 @@ p{
     font-size: 16px; /* Adjust font size */
 }
 .character-list-container{
+    color: aliceblue;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    padding: 30px; /* Adjust the padding value as needed */
+}
+
+th, td {
+    border: 1px solid #e40606;
+    text-align: center;
+    padding: 8px;
     color: antiquewhite;
+}
+
+th {
+    background-color: #8d1130;
 }
 
