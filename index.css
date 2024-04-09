@@ -70,20 +70,20 @@ p{
 .character-list-container{
     color: aliceblue;
 }
+
 table {
-    border-collapse: collapse;
     width: 100%;
-    padding: 30px; /* Adjust the padding value as needed */
+    border-collapse: collapse;
+    background-color: antiquewhite;
 }
-
 th, td {
-    border: 1px solid #e40606;
-    text-align: center;
+    border: 1px solid #0a0a0a;
     padding: 8px;
-    color: antiquewhite;
+    text-align: left;
+}
+th {
+    background-color: #721b1b;
 }
 
-th {
-    background-color: #8d1130;
-}
+    
 

@@ -16,32 +16,35 @@
     <nav>
         <h1>FINAL SPACE</h1>
     </nav>
-    
-    
-     <div class="search-container">
+   <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search...">
         <button type="button" id="searchButton">Search</button>
-        
-
-           
-        
-       
         </div>
     </div>
     <h4>Comedy</h4>
     <p>
         
         <b>After meeting an adorable alien with planet-destroying capabilities, a human prisoner in space goes on an interstellar adventure to save the universe.</p></b>
+
+        <ul id="episodeSummary"></ul>
         <table id="characterTable">
             <thead>
                 <tr>
                     <th>Name</th>
                     <th>Species</th>
+                    <th>Status</th>
+                    <th>Gender</th>
+                    <th>Origin</th>
+                    <th>Abilities</th>
                     <th>Image</th>
                 </tr>
             </thead>
             <tbody id="characterList"></tbody>
         </table>
+        <div class="character-list-container">
+            <ul id="characterList"></ul>
+        </div>
+        
         <script src="index.js"></script> 
 </body>
 </html>
