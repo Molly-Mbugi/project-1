@@ -8,11 +8,10 @@ Application Name: Final Space Explorer
 ## Description
     Users will be able  browse through a list of characters from the Final Space series. Each character card displays essential information such as the character's name, species, status, and an image. Users can click on a character card to view more detailed information about that character, including their background story and notable quotes.
 
-    Users will be able explore a comprehensive episode guide that lists all the episodes from the Final Space series. Each episode entry includes details such as the episode number, title, air date, synopsis, and a thumbnail image. Users can click on an episode to view more information, such as a summary of the episode's plot and memorable scenes.
+    Users will be able explore a comprehensive episode guide that lists all the episodes from the Final Space series. Each episode entry includes details such as the episode number, title, air date. Users can see episodes details.
 
-    Users should search for specific characters, episodes,using a search bar.
-    Users should also search for specific quotes by character name or keyword.
-
+    Users should search for specific characters to see their details using a search bar.
+    
 ## Installation
 You use git clone to be able to download the documents in the GitHub
 
