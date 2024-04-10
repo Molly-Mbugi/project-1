@@ -20,8 +20,8 @@ Application Name: Final Space Explorer
 ## Installation 
 * clone the repository from GitHub onto your local machine.
 * cd to your project directory
-* npminstall
-* once configured runthe project
+* npm install
+* once configured run the project
 
 ### Installation instruction
 ```
