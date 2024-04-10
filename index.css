@@ -89,6 +89,16 @@ th {
     font-size: 16px; /* Adjust font size */
 
 }
+/* Add this to your CSS file */
+.dark-mode {
+    background-color: #333232;
+    color: rgb(128, 128, 128);
+    
+}
+.toggleModeButton{
+    padding: 10px 20px; /* Adjust padding to increase button size */
+    font-size: 17x  
+}
 
     
 

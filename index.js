@@ -15,22 +15,33 @@ async function fetchCharacterData() {
     }
 }
 
+// Function to create a table row for a character
+function createCharacterRow(character) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${character.name}</td>
+        <td>${character.species}</td>
+        <td>${character.status}</td>
+        <td>${character.gender}</td>
+        <td>${character.origin}</td>
+        <td>${character.abilities.join(', ')}</td>
+        <td><img src="${character.img_url}" alt="${character.name}" style="width: 100px;"></td>
+    `;
+    return row;
+}
+
 // Function to display characters in the table
 function displayCharacters(characters) {
     const characterList = document.getElementById('characterList');
-    characterList.innerHTML = 'not found'; // Clear previous content
+    characterList.innerHTML = ''; // Clear previous content
+
+    if (characters.length === 0) {
+        characterList.innerHTML = '<tr><td colspan="7">No characters found</td></tr>';
+        return;
+    }
 
     characters.forEach(character => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${character.name}</td>
-            <td>${character.species}</td>
-            <td>${character.status}</td>
-            <td>${character.gender}</td>
-            <td>${character.origin}</td>
-            <td>${character.abilities.join(', ')}</td>
-            <td><img src="${character.img_url}" alt="${character.name}" style="width: 100px;"></td>
-        `;
+        const row = createCharacterRow(character);
         characterList.appendChild(row);
     });
 }
@@ -62,4 +73,8 @@ document.getElementById('refreshButton').addEventListener('click', async () => {
         console.error('Error fetching character data:', error);
     }
 });
+document.getElementById('toggleModeButton').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+});
+
 
