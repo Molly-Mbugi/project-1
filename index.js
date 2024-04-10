@@ -1,9 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Define API URL for fetching character data
-    const characterUrl = 'https://finalspaceapi.com/api/v0/character';
-
+document.addEventListener("DOMContentLoaded", async function() {
     // Function to fetch character data from the API
     async function fetchCharacterData() {
+        const characterUrl = 'https://finalspaceapi.com/api/v0/character';
         try {
             const response = await fetch(characterUrl);
             if (!response.ok) {
@@ -52,42 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase()));
     }
 
-    // Function to handle search button click
-    document.getElementById('searchButton').addEventListener('click', async () => {
-        const searchInput = document.getElementById('searchInput').value.trim();
-        const characters = await fetchCharacterData();
-        const filteredCharacters = filterCharactersByName(characters, searchInput);
-        displayCharacters(filteredCharacters);
-    });
-
-    // Initial display of all characters
-    fetchCharacterData()
-        .then(characters => displayCharacters(characters))
-        .catch(error => console.error('Error fetching character data:', error));
-
-    // Function to handle refresh button click
-    document.getElementById('refreshButton').addEventListener('click', async () => {
-        try {
-            const characters = await fetchCharacterData();
-            displayCharacters(characters);
-        } catch (error) {
-            console.error('Error fetching character data:', error);
-        }
-    });
-
-    // Function to toggle dark mode
-    document.getElementById('toggleModeButton').addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", async function() {
-    // Define API URL for fetching episode data
-    const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
-
     // Function to fetch episode data from the API
     async function fetchEpisodeData() {
+        const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
         try {
             const response = await fetch(episodeUrl);
             if (!response.ok) {
@@ -124,13 +89,40 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     try {
-        // Fetch episode data from the API
+        // Fetch character data from the API and display characters
+        const characters = await fetchCharacterData();
+        displayCharacters(characters);
+
+        // Fetch episode data from the API and display episodes
         const episodes = await fetchEpisodeData();
-        // Display episodes in the list
         displayEpisodes(episodes);
     } catch (error) {
-        console.error('Error fetching episode data:', error);
+        console.error('Error:', error);
     }
+
+    // Event listener for search button click
+    document.getElementById('searchButton').addEventListener('click', async () => {
+        const searchInput = document.getElementById('searchInput').value.trim();
+        const characters = await fetchCharacterData();
+        const filteredCharacters = filterCharactersByName(characters, searchInput);
+        displayCharacters(filteredCharacters);
+    });
+
+    // Event listener for refresh button click
+    document.getElementById('refreshButton').addEventListener('click', async () => {
+        try {
+            const characters = await fetchCharacterData();
+            displayCharacters(characters);
+        } catch (error) {
+            console.error('Error refreshing characters:', error);
+        }
+    });
+
+    // Event listener for toggle mode button click
+    document.getElementById('toggleModeButton').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
 });
+
 
 
