@@ -26,7 +26,7 @@ Git clone https://github.com/hamida-mstafa/Triangle-tracker.git
 ```
 
 # Live Link
-[Git](gh-pages link)
+https://molly-mbugi.github.io/project-1/
 
 ## Technologies used
 HTML
