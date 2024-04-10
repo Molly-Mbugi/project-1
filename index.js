@@ -53,4 +53,13 @@ fetchCharacterData()
     .then(characters => displayCharacters(characters))
     .catch(error => console.error('Error fetching character data:', error));
 
+// Function to handle refresh button click
+document.getElementById('refreshButton').addEventListener('click', async () => {
+    try {
+        const characters = await fetchCharacterData();
+        displayCharacters(characters);
+    } catch (error) {
+        console.error('Error fetching character data:', error);
+    }
+});
 
