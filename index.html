@@ -6,9 +6,7 @@
     <title>Navigation Bar Example</title>
     <link rel="stylesheet" href="index.css">
     <style>
-        
-
-         
+        /* Add your CSS styles here */
     </style>
 </head>
 <body>
@@ -17,40 +15,42 @@
     <nav>
         <h1>FINAL SPACE</h1>
     </nav>
-    <div id="characterContainer"></div>
-<div id="quoteContainer"></div>
+    
+   
 
-   <div class="search-container">
+    <!-- Search container -->
+    <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search...">
         <button type="button" id="searchButton">Search</button>
         <button type="button" id="refreshButton">Refresh</button>
-        </div>
     </div>
+
     <h4>Comedy</h4>
     
     <p>
-        
-        <b>After meeting an adorable alien with planet-destroying capabilities, a human prisoner in space goes on an interstellar adventure to save the universe.</p></b>
-
-        
-        <table id="characterTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Species</th>
-                    <th>Status</th>
-                    <th>Gender</th>
-                    <th>Origin</th>
-                    <th>Abilities</th>
-                    <th>Image</th>
-                </tr>
-            </thead>
-            <tbody id="characterList"></tbody>
-        </table>
-        <div class="character-list-container">
-            <ul></ul>
-        </div>
-        
-        <script src="index.js"></script> 
+        <b>After meeting an adorable alien with planet-destroying capabilities, a human prisoner in space goes on an interstellar adventure to save the universe.</b>
+    </p>
+ <!-- Container for episode list -->
+ <div class="character-list-container">
+    <ul id="episodeList"></ul> <!-- Here's the div for episodes -->
+</div>
+    <!-- Table for character list -->
+    <table id="characterTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Status</th>
+                <th>Gender</th>
+                <th>Origin</th>
+                <th>Abilities</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody id="characterList"></tbody>
+    </table>
+    
+    <!-- Include your script at the end of the body -->
+    <script src="index.js"></script> 
 </body>
 </html>

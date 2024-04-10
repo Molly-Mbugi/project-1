@@ -82,4 +82,55 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+document.addEventListener("DOMContentLoaded", async function() {
+    // Define API URL for fetching episode data
+    const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
+
+    // Function to fetch episode data from the API
+    async function fetchEpisodeData() {
+        try {
+            const response = await fetch(episodeUrl);
+            if (!response.ok) {
+                throw new Error('Failed to fetch episode data');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
+
+    // Function to create list items for each episode
+    function createEpisodeListItem(episode) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<strong>${episode.name}</strong>: ${episode.air_date}`;
+        return listItem;
+    }
+
+    // Function to display episodes in the list
+    function displayEpisodes(episodes) {
+        const episodeList = document.getElementById('episodeList');
+        episodeList.innerHTML = ''; // Clear previous content
+
+        if (episodes.length === 0) {
+            episodeList.innerHTML = '<li>No episodes found</li>';
+            return;
+        }
+
+        episodes.forEach(episode => {
+            const listItem = createEpisodeListItem(episode);
+            episodeList.appendChild(listItem);
+        });
+    }
+
+    try {
+        // Fetch episode data from the API
+        const episodes = await fetchEpisodeData();
+        // Display episodes in the list
+        displayEpisodes(episodes);
+    } catch (error) {
+        console.error('Error fetching episode data:', error);
+    }
+});
+
 
