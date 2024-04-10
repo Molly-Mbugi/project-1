@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             <td>${character.status}</td>
             <td>${character.gender}</td>
             <td>${character.origin}</td>
+            <td>${character.alias}</td>
             <td>${character.abilities.join(', ')}</td>
             <td><img src="${character.img_url}" alt="${character.name}" style="width: 100px;"></td>
         `;
@@ -66,11 +67,18 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     // Function to create list items for each episode
-    function createEpisodeListItem(episode) {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<strong>${episode.name}</strong>: ${episode.air_date}`;
-        return listItem;
-    }
+function createEpisodeListItem(episode) {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `
+        <strong>Episode ID:</strong> ${episode.id}<br>
+        <strong>Name:</strong> ${episode.name}<br>
+        <strong>Air Date:</strong> ${episode.air_date}<br>
+        
+        
+        
+    `;
+    return listItem;
+}
 
     // Function to display episodes in the list
     function displayEpisodes(episodes) {
