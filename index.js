@@ -1,5 +1,8 @@
+// Add an event listener to wait for the DOM content to be loaded
 document.addEventListener("DOMContentLoaded", async function() {
+    // Function to fetch character data from the Final Space API
     async function fetchCharacterData() {
+        // URL for character data
         const characterUrl = 'https://finalspaceapi.com/api/v0/character';
         try {
             const response = await fetch(characterUrl);
@@ -13,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
+    // Function to create a table row for each character
     function createCharacterRow(character) {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -28,6 +32,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         return row;
     }
 
+    // Function to display characters in the table
     function displayCharacters(characters) {
         const characterList = document.getElementById('characterList');
         characterList.innerHTML = '';
@@ -43,10 +48,12 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
     }
 
+    // Function to filter characters by name
     function filterCharactersByName(characters, name) {
         return characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase()));
     }
 
+    // Function to fetch episode data from the Final Space API
     async function fetchEpisodeData() {
         const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
         try {
@@ -61,6 +68,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     }
 
+    // Function to create list items for each episode
     function createEpisodeListItem(episode) {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
@@ -71,6 +79,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         return listItem;
     }
 
+    // Function to display episodes in a list
     function displayEpisodes(episodes) {
         const episodeList = document.getElementById('episodeList');
         episodeList.innerHTML = '';
@@ -86,6 +95,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
     }
 
+    // Fetch and display characters and episodes when the page loads
     try {
         const characters = await fetchCharacterData();
         displayCharacters(characters);
@@ -96,6 +106,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         console.error('Error:', error);
     }
 
+    // Event listener for the search button to filter characters by name
     document.getElementById('searchButton').addEventListener('click', async () => {
         const searchInput = document.getElementById('searchInput').value.trim();
         const characters = await fetchCharacterData();
@@ -103,6 +114,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         displayCharacters(filteredCharacters);
     });
 
+    // Event listener for the refresh button to fetch and display characters again
     document.getElementById('refreshButton').addEventListener('click', async () => {
         try {
             const characters = await fetchCharacterData();
@@ -112,6 +124,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     });
 
+    // Event listener for the toggle mode button to switch between dark and light mode
     document.getElementById('toggleModeButton').addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
     });
