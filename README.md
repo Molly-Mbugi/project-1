@@ -12,16 +12,22 @@ Application Name: Final Space Explorer
 
     Users should search for specific characters to see their details using a search bar.
     
-## Installation
-You use git clone to be able to download the documents in the GitHub
-
 ## Installation Requirements
-Git
+* major operating systems including Linux, macOS, and Windows. 
+* having an internet connection 
+ * You use git clone to be able to download the documents in the GitHub
+
+## Installation 
+* clone the repository from GitHub onto your local machine.
+* cd to your project directory
+* npminstall
+* once configured runthe project
 
 ### Installation instruction
 ```
-Git clone https://github.com/hamida-mstafa/Triangle-tracker.git
-
+Git clone : https://github.com/Molly-Mbugi/project-1.git
+cd your-repository
+npm install 
 ```
 
 # Live Link
