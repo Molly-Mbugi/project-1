@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", async function() {
-    // Function to fetch character data from the API
     async function fetchCharacterData() {
         const characterUrl = 'https://finalspaceapi.com/api/v0/character';
         try {
@@ -10,11 +9,10 @@ document.addEventListener("DOMContentLoaded", async function() {
             return await response.json();
         } catch (error) {
             console.error('Error fetching character data:', error);
-            return [];
+            throw error;
         }
     }
 
-    // Function to create a table row for a character
     function createCharacterRow(character) {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -30,13 +28,12 @@ document.addEventListener("DOMContentLoaded", async function() {
         return row;
     }
 
-    // Function to display characters in the table
     function displayCharacters(characters) {
         const characterList = document.getElementById('characterList');
-        characterList.innerHTML = ''; // Clear previous content
+        characterList.innerHTML = '';
 
         if (characters.length === 0) {
-            characterList.innerHTML = '<tr><td colspan="7">No characters found</td></tr>';
+            characterList.innerHTML = '<tr><td colspan="8">No characters found</td></tr>';
             return;
         }
 
@@ -46,12 +43,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
     }
 
-    // Function to filter characters by name
     function filterCharactersByName(characters, name) {
         return characters.filter(character => character.name.toLowerCase().includes(name.toLowerCase()));
     }
 
-    // Function to fetch episode data from the API
     async function fetchEpisodeData() {
         const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
         try {
@@ -62,28 +57,23 @@ document.addEventListener("DOMContentLoaded", async function() {
             return await response.json();
         } catch (error) {
             console.error('Error fetching episode data:', error);
-            return [];
+            throw error;
         }
     }
 
-    // Function to create list items for each episode
-function createEpisodeListItem(episode) {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = `
-        <strong>Episode ID:</strong> ${episode.id}<br>
-        <strong>Name:</strong> ${episode.name}<br>
-        <strong>Air Date:</strong> ${episode.air_date}<br>
-        
-        
-        
-    `;
-    return listItem;
-}
+    function createEpisodeListItem(episode) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <strong>Episode ID:</strong> ${episode.id}<br>
+            <strong>Name:</strong> ${episode.name}<br>
+            <strong>Air Date:</strong> ${episode.air_date}<br>
+        `;
+        return listItem;
+    }
 
-    // Function to display episodes in the list
     function displayEpisodes(episodes) {
         const episodeList = document.getElementById('episodeList');
-        episodeList.innerHTML = ''; // Clear previous content
+        episodeList.innerHTML = '';
 
         if (episodes.length === 0) {
             episodeList.innerHTML = '<li>No episodes found</li>';
@@ -97,18 +87,15 @@ function createEpisodeListItem(episode) {
     }
 
     try {
-        // Fetch character data from the API and display characters
         const characters = await fetchCharacterData();
         displayCharacters(characters);
 
-        // Fetch episode data from the API and display episodes
         const episodes = await fetchEpisodeData();
         displayEpisodes(episodes);
     } catch (error) {
         console.error('Error:', error);
     }
 
-    // Event listener for search button click
     document.getElementById('searchButton').addEventListener('click', async () => {
         const searchInput = document.getElementById('searchInput').value.trim();
         const characters = await fetchCharacterData();
@@ -116,7 +103,6 @@ function createEpisodeListItem(episode) {
         displayCharacters(filteredCharacters);
     });
 
-    // Event listener for refresh button click
     document.getElementById('refreshButton').addEventListener('click', async () => {
         try {
             const characters = await fetchCharacterData();
@@ -126,7 +112,6 @@ function createEpisodeListItem(episode) {
         }
     });
 
-    // Event listener for toggle mode button click
     document.getElementById('toggleModeButton').addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
     });
