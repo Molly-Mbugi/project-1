@@ -3,9 +3,15 @@ document.addEventListener("DOMContentLoaded", async function() {
     // Function to fetch character data from the Final Space API
     async function fetchCharacterData() {
         // URL for character data
-        const characterUrl = 'https://finalspaceapi.com/api/v0/character';
+        const charurl = 'https://finalspaceapi.com/api/v0/character';
+
+      
+
+
+
+        
         try {
-            const response = await fetch(characterUrl);
+            const response = await fetch(charurl);
             if (!response.ok) {
                 throw new Error('Failed to fetch character data');
             }
@@ -54,8 +60,11 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     // Function to fetch episode data from the Final Space API
+    
     async function fetchEpisodeData() {
         const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
+
+        
         try {
             const response = await fetch(episodeUrl);
             if (!response.ok) {
@@ -106,13 +115,22 @@ document.addEventListener("DOMContentLoaded", async function() {
         console.error('Error:', error);
     }
 
-    // Event listener for the search button to filter characters by name
-    document.getElementById('searchButton').addEventListener('click', async () => {
-        const searchInput = document.getElementById('searchInput').value.trim();
-        const characters = await fetchCharacterData();
-        const filteredCharacters = filterCharactersByName(characters, searchInput);
-        displayCharacters(filteredCharacters);
+
+// Event listener for the search button to filter characters by name
+document.getElementById('searchButton').addEventListener('click', async () => {
+    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();//values removes whitespace 
+    const characters = document.querySelectorAll('#characterList tr');
+
+    characters.forEach(function (character) {
+        const characterName = character.querySelector('td:first-child').textContent.toLowerCase();
+
+        if (characterName.includes(searchInput)) {
+            character.style.display = 'table-row';
+        } else {
+            character.style.display = 'none';
+        }
     });
+});
 
     // Event listener for the refresh button to fetch and display characters again
     document.getElementById('refreshButton').addEventListener('click', async () => {
@@ -124,11 +142,10 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
     });
 
-    // Event listener for the toggle mode button to switch between dark and light mode
-    document.getElementById('toggleModeButton').addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
+    // Event listener for the dark mode button to switch between dark and light mode
+    document.getElementById('toggleModeButton').addEventListener("click", () => { document. documentElement. classList. toggle("dark-mode"); });
+         
     });
-});
 
 
 

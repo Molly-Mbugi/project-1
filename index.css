@@ -11,7 +11,7 @@ nav {
 }
 
 h1 {
-    color: rgb(240, 9, 9); /* Set text color of the heading to white */
+    color: rgb(240, 9, 9); /* Set text color of the heading to red*/
     margin: 0; 
     font-size: 54px; 
     font-family:  serif ; 
@@ -89,7 +89,7 @@ th {
     font-size: 16px; /* Adjust font size */
 
 }
-/* Add this to your CSS file */
+/* darkmode button*/
 .dark-mode {
     background-color: #333232;
     color: rgb(128, 128, 128);
