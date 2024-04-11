@@ -128,5 +128,9 @@ th{
     margin: 0 auto; /* Center the container horizontally */
     padding: 20px; /* Add padding around the content */
 }
+h6{
+    color: white; /* Change the color of h1 headings */
+    text-align: center;
+    font-size: 17px; 
 
- 
+}
