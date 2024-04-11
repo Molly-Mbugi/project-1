@@ -1,25 +1,18 @@
-// Add an event listener to wait for the DOM content to be loaded
-document.addEventListener("DOMContentLoaded", async function() {
+document.addEventListener("DOMContentLoaded", function() {
     // Function to fetch character data from the Final Space API
-    async function fetchCharacterData() {
-        // URL for character data
+    function fetchCharacterData() {
         const charurl = 'https://finalspaceapi.com/api/v0/character';
-
-      
-
-
-
-        
-        try {
-            const response = await fetch(charurl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch character data');
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Error fetching character data:', error);
-            throw error;
-        }
+        return fetch(charurl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch character data');
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Error fetching character data:', error);
+                throw error;
+            });
     }
 
     // Function to create a table row for each character
@@ -60,25 +53,26 @@ document.addEventListener("DOMContentLoaded", async function() {
     }
 
     // Function to fetch episode data from the Final Space API
-    
-    async function fetchEpisodeData() {
-        const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
 
+    function fetchEpisodeData() {
+        const episodeUrl = 'https://finalspaceapi.com/api/v0/episode';
         
-        try {
-            const response = await fetch(episodeUrl);
-            if (!response.ok) {
-                throw new Error('Failed to fetch episode data');
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Error fetching episode data:', error);
-            throw error;
-        }
+        return fetch(episodeUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch episode data');
+                }
+                return response.json();
+            })
+            .catch(error => {
+                console.error('Error fetching episode data:', error);
+                throw error;
+            });
     }
+    
 
     // Function to create list items for each episode
-    function createEpisodeListItem(episode) {
+    function createepisodelistItem(episode) {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
             <strong>Episode ID:</strong> ${episode.id}<br>
@@ -91,56 +85,62 @@ document.addEventListener("DOMContentLoaded", async function() {
     // Function to display episodes in a list
     function displayEpisodes(episodes) {
         const episodeList = document.getElementById('episodeList');
-        episodeList.innerHTML = '';
+        episodeList.innerHTML = '';//This clears content to empty string
 
         if (episodes.length === 0) {
-            episodeList.innerHTML = '<li>No episodes found</li>';
-            return;
+            return; episodeList.innerHTML = '<li>No episodes found</li>';
+            
         }
 
-        episodes.forEach(episode => {
-            const listItem = createEpisodeListItem(episode);
+        episodes.forEach(episode => {// loop over each episode of array
+            const listItem = createepisodelistItem(episode);
             episodeList.appendChild(listItem);
         });
     }
 
     // Fetch and display characters and episodes when the page loads
-    try {
-        const characters = await fetchCharacterData();
+    fetchCharacterData()
+    .then(characters => {
         displayCharacters(characters);
-
-        const episodes = await fetchEpisodeData();
+        return fetchEpisodeData(); // Fetch episodes after characters are displayed
+    })
+    .then(episodes => {
         displayEpisodes(episodes);
-    } catch (error) {
-        console.error('Error:', error);
-    }
+    })
+    .catch(error => {
+        console.log('Error:', error);
+    });
+
 
 
 // Event listener for the search button to filter characters by name
 document.getElementById('searchButton').addEventListener('click', async () => {
-    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();//values removes whitespace 
+    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();//.values removes whitespace and  to lowercase ensures that the search functionality is case-insensitive.
     const characters = document.querySelectorAll('#characterList tr');
 
-    characters.forEach(function (character) {
-        const characterName = character.querySelector('td:first-child').textContent.toLowerCase();
-
+    characters.forEach(function (character) {// loop that iterates over each element in the characters
+        const characterName = character.querySelector('td:first-child').textContent.toLowerCase();//selectfirst child to next element in <td>
+// if condition if character is  available or not
         if (characterName.includes(searchInput)) {
             character.style.display = 'table-row';
         } else {
-            character.style.display = 'none';
+            character.style.display = 'none ';
         }
     });
 });
 
+
     // Event listener for the refresh button to fetch and display characters again
-    document.getElementById('refreshButton').addEventListener('click', async () => {
-        try {
-            const characters = await fetchCharacterData();
-            displayCharacters(characters);
-        } catch (error) {
-            console.error('Error refreshing characters:', error);
-        }
+    document.getElementById('refreshButton').addEventListener('click', () => {
+        fetchCharacterData()
+            .then(characters => {
+                displayCharacters(characters);
+            })
+            .catch(error => {
+                console.log('Error refreshing characters:', error);
+            });
     });
+    
 
     // Event listener for the dark mode button to switch between dark and light mode
     document.getElementById('toggleModeButton').addEventListener("click", () => { document. documentElement. classList. toggle("dark-mode"); });
