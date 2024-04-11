@@ -38,7 +38,7 @@ p{
 h4{
     color: white; /* Change the color of h1 headings */
     text-align: center;
-    font-size: 40px; 
+    font-size: 17px; 
 }
 .search-container {
     text-align: center;
@@ -74,7 +74,7 @@ p{
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: antiquewhite;
+    background-color:whitesmoke;
 }
 th, td {
     border: 1px solid #0a0a0a;
@@ -91,8 +91,8 @@ th {
 }
 /* darkmode button*/
 .dark-mode {
-    background-color: #333232;
-    color: rgb(128, 128, 128);
+    background-color: black;
+    color: black;
     
 }
 .toggleModeButton{
@@ -100,8 +100,33 @@ th {
     font-size: 17x  
 }
 H3{
-    color: aliceblue;
+    color: rgb(250, 253, 255);
+}
+td{
+    color: #0a0a0a;
+}
+body{
+    background-color: #2e2d2dd0;
+}
+th{
+    color:white;
+}
+   /* Define the style for the table */
+   table {
+    width: px; /* Set the desired width */
+    height: 0px; /* Set the desired height */
+    border-collapse: collapse; /* Optional: Collapse table borders */
+    margin: 0 auto; /* Center the table horizontally */
+  }
+  /* Define the style for table cells */
+  td {
+    border: 2px solid black; /* Optional: Add borders to table cells */
+    padding: 2px; /* Optional: Add padding to table cells */
+  }
+  .main-container {
+    max-width: 1200px; /* Adjust this value to your preference */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding around the content */
 }
 
-    
-
+ 

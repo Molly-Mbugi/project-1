@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>${character.origin}</td>
             <td>${character.alias}</td>
             <td>${character.abilities.join(', ')}</td>
-            <td><img src="${character.img_url}" alt="${character.name}" style="width: 80px;"></td>
+            <td><img src="${character.img_url}" alt="${character.name}" style="width: 90px;"></td>
         `;
         return row;
     }
