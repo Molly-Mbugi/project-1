@@ -11,7 +11,12 @@ Application Name: Final Space Explorer
     Users will be able explore a comprehensive episode guide that lists all the episodes from the Final Space series. Each episode entry includes details such as the episode number, title, air date. Users can see episodes details.
 
     Users should search for specific characters to see their details using a search bar.
-    
+## How it works
+      *The user should be able to switch from light to darkmode
+      *there is clear display of episodes list
+      *there is a clear table that have the characters name abilities their gender and other characteristics 
+      *the user should be able to filter the characters by name
+      *You can refres to go back to the table
 ## Installation Requirements
 * major operating systems including Linux, macOS, and Windows. 
 * having an internet connection 
